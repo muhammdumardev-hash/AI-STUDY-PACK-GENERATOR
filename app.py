@@ -65,16 +65,6 @@ st.markdown(
         color: #e2e8f0;
     }
 
-    /* Card wrapper */
-    .card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        padding: 22px 24px;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    }
-
     .pill {
         display: inline-block;
         padding: 4px 12px;
@@ -109,14 +99,6 @@ st.markdown(
     section[data-testid="stSidebar"] {
         background: rgba(255, 255, 255, 0.02);
         border-right: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    /* Study pack output box */
-    .output-box {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        padding: 28px;
     }
 
     hr {
@@ -216,8 +198,7 @@ with st.sidebar:
 
 st.markdown('<div class="section-title">🎯 What do you want to study?</div>', unsafe_allow_html=True)
 
-with st.container():
-    st.markdown('<div class="card">', unsafe_allow_html=True)
+with st.container(border=True):
 
     topic = st.text_input(
         "Subject / Topic",
@@ -229,8 +210,6 @@ with st.container():
         placeholder="Example: Focus on important exam concepts and explain difficult topics simply.",
         height=90
     )
-
-    st.markdown('</div>', unsafe_allow_html=True)
 
 
 # =========================================================
@@ -403,9 +382,8 @@ if "study_pack" in st.session_state:
 
     study_pack = st.session_state["study_pack"]
 
-    st.markdown('<div class="output-box">', unsafe_allow_html=True)
-    st.markdown(study_pack)
-    st.markdown('</div>', unsafe_allow_html=True)
+    with st.container(border=True):
+        st.markdown(study_pack)
 
     st.divider()
 
